@@ -6,6 +6,10 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  webpack: config => {
+    config.cache = false
+    return config
+  },
   reactStrictMode: true,
   swcMinify: true,
   images: {
