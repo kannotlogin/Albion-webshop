@@ -1,1 +1,24 @@
+# folders
+node_modules
+.next
+dist
+build
+.vscode
+public
+
+# bestandsformaten
+*.css
+*.scss
+*.html
+*.json
+*.lock
+*.map
+
+# ignore alles wat Prettier niet correct kan parsen
+*.yml
+*.yaml
+*.md
+*.graphql
+
+# types
 **/payload-types.ts

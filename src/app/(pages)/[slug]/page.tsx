@@ -78,7 +78,6 @@ export default async function Page({ params: { slug = 'home' } }) {
           />
         </>
       )}
-
     </React.Fragment>
   )
 }

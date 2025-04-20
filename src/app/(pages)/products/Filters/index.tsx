@@ -17,7 +17,8 @@ const Filters = ({ categories }: { categories: Category[] }) => {
 
   // Filter de categorieën op basis van de zoekterm
   const filteredCategories = categories.filter(category =>
-    category.title.toLowerCase().includes(searchTerm.toLowerCase()),)
+    category.title.toLowerCase().includes(searchTerm.toLowerCase()),
+  )
 
   const handleCategories = (categoryId: string) => {
     if (categoryFilters.includes(categoryId)) {
