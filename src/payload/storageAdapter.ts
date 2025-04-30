@@ -1,5 +1,4 @@
 import { s3Adapter } from '@payloadcms/plugin-cloud-storage/s3'
-import { S3Client } from '@aws-sdk/client-s3'
 
 export const storageAdapter = s3Adapter({
   config: {
