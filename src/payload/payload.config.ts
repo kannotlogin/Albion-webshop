@@ -127,6 +127,10 @@ export default buildConfig({
       collections: {
         media: {
           adapter: storageAdapter,
+          disableLocalStorage: true,
+          generateFileURL: ({ filename }) => {
+            return `https://mvvkjeoabgrmprvbhsop.supabase.co/storage/v1/object/public/uploads/${filename}`
+          },
         },
       },
     }),
