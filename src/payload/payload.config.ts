@@ -29,9 +29,11 @@ import { Header } from './globals/Header'
 import { Settings } from './globals/Settings'
 import { priceUpdated } from './stripe/webhooks/priceUpdated'
 import { productUpdated } from './stripe/webhooks/productUpdated'
+import { cloudStorage } from '@payloadcms/plugin-cloud-storage'
+import { storageAdapter } from './storageAdapter'
 
 const generateTitle: GenerateTitle = () => {
-  return 'My Store'
+  return 'Albion'
 }
 
 const mockModulePath = path.resolve(__dirname, './emptyModuleMock.js')
@@ -121,6 +123,13 @@ export default buildConfig({
     },
   ],
   plugins: [
+    cloudStorage({
+      collections: {
+        media: {
+          adapter: storageAdapter,
+        },
+      },
+    }),
     stripePlugin({
       stripeSecretKey: process.env.STRIPE_SECRET_KEY || '',
       isTestKey: Boolean(process.env.PAYLOAD_PUBLIC_STRIPE_IS_TEST_KEY),

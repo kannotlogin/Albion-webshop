@@ -5,7 +5,13 @@ import type { CollectionConfig } from 'payload/types'
 export const Media: CollectionConfig = {
   slug: 'media',
   upload: {
-    staticDir: path.resolve(__dirname, '../../../media'),
+    disableLocalStorage: true,
+    adminThumbnail: ({ doc }) => {
+      if (doc?.filename) {
+        return `https://mvvkjeoabgrmprvbhsop.supabase.co/storage/v1/object/public/uploads//${doc.filename}`
+      }
+      return null
+    },
   },
   access: {
     read: () => true,
