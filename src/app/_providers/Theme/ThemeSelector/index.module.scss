@@ -1,52 +1,24 @@
-.selectContainer {
-  position: relative;
-  visibility: visible;
-  opacity: 1;
-  transition: opacity 50ms linear;
-}
-
-.hidden {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.select {
+.themeButton {
   all: unset;
-  padding-right: 14px;
-}
+  cursor: pointer;
+  background-color: var(--background);
+  border: 1px solid var(--border-color, #ccc);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+  transition: all 0.2s ease-in-out;
 
-.selectIcon {
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 100%;
-  pointer-events: none;
-  width: 6px;
-
-  & > svg {
-    width: 8px;
-    height: 6px;
-
-    path {
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 1px;
-      vector-effect: non-scaling-stroke;
-      stroke-linecap: round;
-    }
+  &:hover {
+    background-color: var(--hover-bg, #f0f0f0);
+    color: var(--accent, #0070f3);
+    border-color: var(--accent, #0070f3);
   }
-}
 
-.iconUp {
-  position: absolute;
-  top: calc(50% - 8px);
-  left: 50%;
-  transform: translate3d(-50%, 0, 0) rotate(180deg);
-}
-
-.iconDown {
-  position: absolute;
-  bottom: calc(50% - 8px);
-  left: 50%;
-  transform: translate3d(-50%, 0, 0);
+  &:focus {
+    outline: 2px solid var(--accent, #0070f3);
+    outline-offset: 2px;
+  }
 }

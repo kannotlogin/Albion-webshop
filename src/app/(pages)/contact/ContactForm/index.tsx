@@ -39,15 +39,15 @@ export default function Contact({
   const validateEmail = (email: string) => {
     if (!email) return
     if (!email.includes('@')) {
-      setEmailError('Invalid email (must have a @)')
+      setEmailError('Ongeldig e-mailadres (moet een @ hebben)')
     } else {
       const regex = /@([a-zA-Z0-9]+)/
       if (!regex.test(email)) {
-        setEmailError('Invalid email (after @ must be a letter or number)')
+        setEmailError('Ongeldig e-mailadres (na @ moet een letter of cijfer zijn)')
       } else {
         const regex = /@([a-zA-Z0-9]+)\.[a-zA-Z0-9]+/
         if (!regex.test(email)) {
-          setEmailError('Invalid email (have a .com/.be/...)')
+          setEmailError('Ongeldig e-mailadres (heeft geen .com/.be/...)')
         } else {
           setEmailError('')
         }
@@ -63,11 +63,11 @@ export default function Contact({
 
   return (
     <div className={classes.contactform}>
-      <h1>Contact Us</h1>
+      <h1>Contacteer Ons</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <label>
-          Name *
-          <input {...register('name', { required: 'Name is required' })} type="text" />
+          Naam *
+          <input {...register('name', { required: 'Naam is vereist' })} type="text" />
           {errors.name && <p style={{ color: 'red' }}>{errors.name.message}</p>}
         </label>
         <br />
@@ -76,7 +76,7 @@ export default function Contact({
           Email *
           <input
             {...register('email', {
-              required: 'Email is required',
+              required: 'Email is vereist',
             })}
             type="email"
           />
@@ -86,15 +86,15 @@ export default function Contact({
         <br />
 
         <label>
-          Subject *
-          <input {...register('subject', { required: 'Subject is required' })} />
+          Onderwerp *
+          <input {...register('subject', { required: 'Onderwerp is vereist' })} />
           {errors.subject && <p style={{ color: 'red' }}>{errors.subject.message}</p>}
         </label>
         <br />
 
         <label>
-          Message *
-          <textarea {...register('message', { required: 'Message is required' })} />
+          Bericht *
+          <textarea {...register('message', { required: 'Bericht is vereist' })} />
           {errors.message && <p style={{ color: 'red' }}>{errors.message.message}</p>}
         </label>
         <br />
@@ -109,7 +109,7 @@ export default function Contact({
             !!emailError
           }
         >
-          Send Message
+          Verstuur
         </button>
       </form>
     </div>

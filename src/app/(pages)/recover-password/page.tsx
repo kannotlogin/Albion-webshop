@@ -76,11 +76,17 @@ export default async function RecoverPassword() {
           <RenderParams className={classes.params} />
 
           <Link href="/login" className={classes.backLink}>
-            <Image src="/assets/icons/arrow-left.svg" alt="left arrow" width={24} height={24} />
+            <Image
+              src="/assets/icons/arrow-left.svg"
+              alt="left arrow"
+              width={24}
+              height={24}
+              className={classes.icon}
+            />
             <p>Back</p>
           </Link>
           <div className={classes.formTitle}>
-            <h3>Forgot Password</h3>
+            <h3>Wachtwoord vergeten</h3>
           </div>
           <RecoverPasswordForm sendMail={sendMail} />
         </div>
@@ -90,10 +96,10 @@ export default async function RecoverPassword() {
 }
 
 export const metadata: Metadata = {
-  title: 'Recover Password',
-  description: 'Enter your email address to recover your password.',
+  title: 'Wachtwoord vergeten',
+  description: 'Voer uw e-mailadres in om uw wachtwoord te herstellen.',
   openGraph: mergeOpenGraph({
-    title: 'Recover Password',
+    title: 'Wachtwoord vergeten',
     url: '/recover-password',
   }),
 }

@@ -15,7 +15,7 @@ import classes from './index.module.scss'
 export default async function Orders() {
   const { token } = await getMeUser({
     nullUserRedirect: `/login?error=${encodeURIComponent(
-      'You must be logged in to view your orders.',
+      'U moet ingelogd zijn om uw bestellingen te bekijken.',
     )}&redirect=${encodeURIComponent('/orders')}`,
   })
 
@@ -43,9 +43,9 @@ export default async function Orders() {
 
   return (
     <div>
-      <h5>My Orders</h5>
+      <h5>Mijn bestellingen</h5>
       {(!orders || !Array.isArray(orders) || orders?.length === 0) && (
-        <p className={classes.noOrders}>You have no orders.</p>
+        <p className={classes.noOrders}>Je hebt geen opdrachten.</p>
       )}
       <RenderParams />
       {orders && orders.length > 0 && (
@@ -54,23 +54,23 @@ export default async function Orders() {
             <li key={order.id} className={classes.order}>
               <Link className={classes.item} href={`/account/orders/${order.id}`}>
                 <div className={classes.itemContent}>
-                  <h6 className={classes.itemTitle}>{`Order ${order.id}`}</h6>
+                  <h6 className={classes.itemTitle}>{`Aankoop ${order.id}`}</h6>
                   <div className={classes.itemMeta}>
                     <p>
-                      {'Total: '}
+                      {'Totaal: '}
                       {new Intl.NumberFormat('en-US', {
                         style: 'currency',
                         currency: 'usd',
                       }).format(order.total / 100)}
                     </p>
-                    <p className={classes.orderDate}>{`Ordered On: ${formatDateTime(
+                    <p className={classes.orderDate}>{`Besteld op: ${formatDateTime(
                       order.createdAt,
                     )}`}</p>
                   </div>
                 </div>
                 <Button
                   appearance="default"
-                  label="View Order"
+                  label="Bekijk bestelling"
                   className={classes.button}
                   el="link"
                   href={`/account/orders/${order.id}`}

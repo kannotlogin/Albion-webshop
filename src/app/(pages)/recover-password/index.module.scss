@@ -115,3 +115,17 @@
     font-size: 18px;
   }
 }
+
+[data-theme='light'] .icon {
+  filter: invert(0);
+}
+
+[data-theme='dark'] .icon {
+  filter: invert(1);
+}
+
+.backLink {
+  p {
+    color: var(--theme-text);
+  }
+}

@@ -41,7 +41,6 @@ const AccountForm: React.FC = () => {
     async (data: FormData) => {
       if (user) {
         const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/${user.id}`, {
-          // Make sure to include cookies with fetch
           credentials: 'include',
           method: 'PATCH',
           body: JSON.stringify(data),
@@ -53,7 +52,7 @@ const AccountForm: React.FC = () => {
         if (response.ok) {
           const json = await response.json()
           setUser(json.doc)
-          setSuccess('Successfully updated account.')
+          setSuccess('Account succesvol bijgewerkt.')
           setError('')
           setChangePassword(false)
           reset({
@@ -63,7 +62,7 @@ const AccountForm: React.FC = () => {
             passwordConfirm: '',
           })
         } else {
-          setError('There was a problem updating your account.')
+          setError('Er is een probleem opgetreden bij het bijwerken van uw account.')
         }
       }
     },
@@ -74,12 +73,11 @@ const AccountForm: React.FC = () => {
     if (user === null) {
       router.push(
         `/login?error=${encodeURIComponent(
-          'You must be logged in to view this page.',
+          'U moet ingelogd zijn om deze pagina te bekijken.',
         )}&redirect=${encodeURIComponent('/account')}`,
       )
     }
 
-    // Once user is loaded, reset form to have default values
     if (user) {
       reset({
         email: user.email,
@@ -103,10 +101,10 @@ const AccountForm: React.FC = () => {
             error={errors.email}
             type="email"
           />
-          <Input name="name" label="Name" register={register} error={errors.name} />
+          <Input name="name" label="Naam" register={register} error={errors.name} />
 
           <p>
-            {'Change your account details below, or '}
+            {'Wijzig hieronder uw accountgegevens of '}
             <button
               type="button"
               className={classes.changePassword}
@@ -114,26 +112,26 @@ const AccountForm: React.FC = () => {
             >
               click here
             </button>
-            {' to change your password.'}
+            {' om uw wachtwoord te wijzigen.'}
           </p>
         </Fragment>
       ) : (
         <Fragment>
           <p>
-            {'Change your password below, or '}
+            {'Wijzig hieronder uw wachtwoord, of '}
             <button
               type="button"
               className={classes.changePassword}
               onClick={() => setChangePassword(!changePassword)}
             >
-              cancel
+              annuleer
             </button>
             .
           </p>
           <Input
             name="password"
             type="password"
-            label="Password"
+            label="Wachtwoord"
             required
             register={register}
             error={errors.password}
@@ -141,17 +139,19 @@ const AccountForm: React.FC = () => {
           <Input
             name="passwordConfirm"
             type="password"
-            label="Confirm Password"
+            label="Bevestig wachtwoord"
             required
             register={register}
-            validate={value => value === password.current || 'The passwords do not match'}
+            validate={value => value === password.current || 'De wachtwoorden komen niet overeen'}
             error={errors.passwordConfirm}
           />
         </Fragment>
       )}
       <Button
         type="submit"
-        label={isLoading ? 'Processing' : changePassword ? 'Change Password' : 'Update Account'}
+        label={
+          isLoading ? 'Verwerking' : changePassword ? 'Wachtwoord wijzigen' : 'Account bijwerken'
+        }
         disabled={isLoading}
         appearance="primary"
         className={classes.submit}

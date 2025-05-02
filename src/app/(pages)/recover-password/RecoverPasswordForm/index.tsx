@@ -46,7 +46,10 @@ export const RecoverPasswordForm: React.FC<{
     <Fragment>
       {!success ? (
         <>
-          <p>Enter your registered email address. We'll send you a link to reset your password.</p>
+          <p>
+            Voer je geregistreerde e-mailadres in. We sturen je een link om je wachtwoord opnieuw in
+            te stellen.
+          </p>
 
           <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
             {error && <Message error={error} className={classes.message} />}
@@ -68,8 +71,8 @@ export const RecoverPasswordForm: React.FC<{
         </>
       ) : (
         <>
-          <h1>Request Submitted</h1>
-          <p>Check your email for a link to securely reset your password.</p>
+          <h1>Verzoek ingediend</h1>
+          <p>Controleer uw e-mail voor een link om uw wachtwoord veilig opnieuw in te stellen.</p>
         </>
       )}
     </Fragment>

@@ -39,3 +39,11 @@
 .personalInfo {
   margin-bottom: 30px;
 }
+
+[data-theme='light'] .navItem img {
+  filter: invert(0);
+}
+
+[data-theme='dark'] .navItem img {
+  filter: invert(1);
+}

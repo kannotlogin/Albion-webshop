@@ -1,53 +1,75 @@
 'use client'
 
-import React from 'react'
-
-import { Chevron } from '../../../_components/Chevron'
+import React, { useState, useEffect } from 'react'
+import { Sun, Moon, Laptop } from 'lucide-react'
 import { useTheme } from '..'
-import { getImplicitPreference } from '../shared'
 import { Theme, themeLocalStorageKey } from './types'
-
 import classes from './index.module.scss'
 
-export const ThemeSelector: React.FC = () => {
-  const selectRef = React.useRef<HTMLSelectElement>(null)
-  const { setTheme } = useTheme()
-  const [show, setShow] = React.useState(false)
+const themeIcons = {
+  light: <Sun size={20} />,
+  dark: <Moon size={20} />,
+  auto: <Laptop size={20} />,
+}
 
-  const onThemeChange = (themeToSet: Theme & 'auto') => {
-    if (themeToSet === 'auto') {
-      setTheme(null)
-      if (selectRef.current) selectRef.current.value = 'auto'
-    } else {
-      setTheme(themeToSet)
-    }
+const applyVisualTheme = (theme: Theme | 'auto') => {
+  if (theme === 'auto') {
+    const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+    document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light')
+  } else {
+    document.documentElement.setAttribute('data-theme', theme)
   }
+}
 
-  React.useEffect(() => {
-    const preference = window.localStorage.getItem(themeLocalStorageKey)
-    if (selectRef.current) {
-      selectRef.current.value = preference ?? 'auto'
-      setShow(true)
-    }
+export const ThemeSelector: React.FC = () => {
+  const { setTheme } = useTheme()
+  const [show, setShow] = useState(false)
+  const [localTheme, setLocalTheme] = useState<Theme | 'auto'>('auto')
+
+  useEffect(() => {
+    const preference = window.localStorage.getItem(themeLocalStorageKey) as Theme | 'auto' | null
+    const initialTheme = preference ?? 'auto'
+    setLocalTheme(initialTheme)
+    setTheme(initialTheme)
+    applyVisualTheme(initialTheme)
+    setShow(true)
   }, [])
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+    const listener = (e: MediaQueryListEvent) => {
+      const current = window.localStorage.getItem(themeLocalStorageKey)
+      if (current === 'auto') {
+        applyVisualTheme('auto')
+      }
+    }
+    mediaQuery.addEventListener('change', listener)
+    return () => mediaQuery.removeEventListener('change', listener)
+  }, [])
+
+  const handleClick = () => {
+    const themes: (Theme | 'auto')[] = ['light', 'dark', 'auto']
+    const currentIndex = themes.indexOf(localTheme)
+    const nextTheme = themes[(currentIndex + 1) % themes.length]
+
+    setLocalTheme(nextTheme)
+    window.localStorage.setItem(themeLocalStorageKey, nextTheme)
+    applyVisualTheme(nextTheme)
+  }
 
   return (
     <div className={[classes.selectContainer, !show && classes.hidden].filter(Boolean).join(' ')}>
       <label htmlFor="theme">
-        <select
-          id="theme"
-          onChange={e => onThemeChange(e.target.value as Theme & 'auto')}
-          ref={selectRef}
-          className={classes.select}
+        <button
+          onClick={handleClick}
+          className={classes.themeButton}
+          aria-label={`Thema wisselen (huidig: ${localTheme})`}
+          title={`Wissel naar ${
+            localTheme === 'light' ? 'donker' : localTheme === 'dark' ? 'auto' : 'licht'
+          } thema`}
         >
-          <option value="auto">Auto</option>
-          <option value="light">Light</option>
-          <option value="dark">Dark</option>
-        </select>
-        <div className={classes.selectIcon}>
-          <Chevron className={classes.iconUp} />
-          <Chevron className={classes.iconDown} />
-        </div>
+          {themeIcons[localTheme]}
+        </button>
       </label>
     </div>
   )

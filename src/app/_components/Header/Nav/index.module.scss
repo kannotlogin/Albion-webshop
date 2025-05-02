@@ -11,10 +11,23 @@
 
   > * {
     text-decoration: none;
+    color: var(--theme-text)
   }
 }
 
 .hide {
   opacity: 0;
   visibility: hidden;
+}
+
+[data-theme='light'] {
+  .account img {
+    filter: invert(0);
+  }
+}
+
+[data-theme='dark'] {
+  .account img {
+    filter: invert(1);
+  }
 }

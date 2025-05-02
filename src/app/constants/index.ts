@@ -1,44 +1,44 @@
 export const inclusions = [
   {
-    title: 'Free Shipping',
-    description: 'Free shipping for order above $150',
+    title: 'Gratis verzending',
+    description: 'Gratis verzending vanaf €150 binnen België.',
     icon: '/assets/icons/shipping.svg',
   },
   {
-    title: 'Money Guarantee',
-    description: 'Within 30 days for an exchange',
+    title: 'Ruilen of geld terug',
+    description: '14 dagen retourrecht bij ongebruikte artikelen.',
     icon: '/assets/icons/dollar.svg',
   },
   {
-    title: 'Online Support',
-    description: '24 hours a day, 7 days a week',
+    title: 'Klantendienst',
+    description: 'Contacteer ons 24/7 via het formulier.',
     icon: '/assets/icons/support.svg',
   },
   {
-    title: 'Flexible Payment',
-    description: 'Pay with multiple credit cards',
+    title: 'Flexibele betaalmethodes',
+    description: 'Betaal veilig met Bancontact, Visa, Mastercard & meer.',
     icon: '/assets/icons/payment.svg',
   },
 ]
 
 export const profileNavItems = [
   {
-    title: 'Personal Information',
+    title: 'Persoonlijke informatie',
     url: '/account',
     icon: '/assets/icons/user.svg',
   },
   {
-    title: 'My Purchases',
+    title: 'Mijn aankopen',
     url: '/account/purchases',
     icon: '/assets/icons/purchases.svg',
   },
   {
-    title: 'My Orders',
+    title: 'Mijn bestellingen',
     url: '/account/orders',
     icon: '/assets/icons/orders.svg',
   },
   {
-    title: 'Logout',
+    title: 'Uitloggen',
     url: '/logout',
     icon: '/assets/icons/logout.svg',
   },

@@ -11,13 +11,13 @@ import classes from './index.module.scss'
 export default async function Purchases() {
   const { user } = await getMeUser({
     nullUserRedirect: `/login?error=${encodeURIComponent(
-      'You must be logged in to access your account.',
+      'U moet ingelogd zijn om toegang te krijgen tot uw account.',
     )}&redirect=${encodeURIComponent('/account')}`,
   })
 
   return (
     <div>
-      <h5>Purchased Products</h5>
+      <h5>Gekochte producten</h5>
       <div>
         {user?.purchases?.length || 0 > 0 ? (
           <ul className={classes.purchases}>
@@ -39,7 +39,7 @@ export default async function Purchases() {
                       <div className={classes.itemDetails}>
                         <h6>{purchase.title}</h6>
                         <Price product={purchase} />
-                        <p className={classes.purchasedDate}>{`Purchased On: ${formatDateTime(
+                        <p className={classes.purchasedDate}>{`Gekocht op: ${formatDateTime(
                           purchase.createdAt,
                         )}`}</p>
                       </div>
@@ -50,7 +50,7 @@ export default async function Purchases() {
             })}
           </ul>
         ) : (
-          <div className={classes.noPurchases}>You have no purchases.</div>
+          <div className={classes.noPurchases}>U heeft geen aankopen.</div>
         )}
       </div>
     </div>

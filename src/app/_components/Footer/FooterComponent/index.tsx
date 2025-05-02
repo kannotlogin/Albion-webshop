@@ -11,6 +11,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Footer, Media } from '../../../../payload/payload-types'
 import { Button } from '../../Button'
+import { ThemeSelector } from '../../../_providers/Theme/ThemeSelector'
 
 const FooterComponent = ({ footer }: { footer: Footer }) => {
   const pathname = usePathname()
@@ -71,6 +72,7 @@ const FooterComponent = ({ footer }: { footer: Footer }) => {
                 )
               })}
             </div>
+            <ThemeSelector />
           </div>
         </Gutter>
       </div>

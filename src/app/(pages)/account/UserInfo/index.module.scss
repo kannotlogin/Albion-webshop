@@ -26,3 +26,11 @@
   font-size: 16px;
   line-height: 14px;
 }
+
+[data-theme='light'] .profile img {
+  filter: invert(0);
+}
+
+[data-theme='dark'] .profile img {
+  filter: invert(1);
+}
