@@ -7,9 +7,12 @@ import { fetchDocs } from '../../_api/fetchDocs'
 import { Blocks } from '../../_components/Blocks'
 import { Gutter } from '../../_components/Gutter'
 import { HR } from '../../_components/HR'
+import { generateMeta } from '../../_utilities/generateMeta'
 import Filters from './Filters'
 
 import classes from './index.module.scss'
+import { Metadata } from 'next'
+import { mergeOpenGraph } from '../../_utilities/mergeOpenGraph'
 
 const Products = async () => {
   const { isEnabled: isDraftMode } = draftMode()
@@ -38,6 +41,15 @@ const Products = async () => {
       <HR />
     </div>
   )
+}
+
+export const metadata: Metadata = {
+  title: 'Albion - Products',
+  description: 'Dit is de Albion producten pagina.',
+  openGraph: mergeOpenGraph({
+    title: 'Albion - Products',
+    url: '/products',
+  }),
 }
 
 export default Products

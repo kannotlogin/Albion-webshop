@@ -39,12 +39,7 @@ export default async function Orders() {
         return json
       })
       ?.then(json => json.docs)
-  } catch (error) {
-    // when deploying this template on Payload Cloud, this page needs to build before the APIs are live
-    // so swallow the error here and simply render the page with fallback data where necessary
-    // in production you may want to redirect to a 404  page or at least log the error somewhere
-    // console.error(error)
-  }
+  } catch (error) {}
 
   return (
     <Gutter className={classes.orders}>
@@ -91,7 +86,7 @@ export default async function Orders() {
 
 export const metadata: Metadata = {
   title: 'Orders',
-  description: 'Your orders.',
+  description: 'Uw ankopen.',
   openGraph: mergeOpenGraph({
     title: 'Orders',
     url: '/orders',

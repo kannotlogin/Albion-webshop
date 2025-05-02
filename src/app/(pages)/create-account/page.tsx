@@ -14,7 +14,7 @@ import Link from 'next/link'
 export default async function CreateAccount() {
   await getMeUser({
     validUserRedirect: `/account?warning=${encodeURIComponent(
-      'Cannot create a new account while logged in, please log out and try again.',
+      'Kan geen nieuw account aanmaken terwijl u bent ingelogd. Meld u af en probeer het opnieuw.',
     )}`,
   })
 
@@ -52,7 +52,7 @@ export default async function CreateAccount() {
 
 export const metadata: Metadata = {
   title: 'Account',
-  description: 'Create an account or log in to your existing account.',
+  description: 'Maak een account of login op een bestaand account.',
   openGraph: mergeOpenGraph({
     title: 'Account',
     url: '/account',

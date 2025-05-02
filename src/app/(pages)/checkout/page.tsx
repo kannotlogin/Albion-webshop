@@ -24,8 +24,7 @@ export default async function Checkout() {
   try {
     settings = await fetchSettings()
   } catch (error) {
-    // no need to redirect to 404 here, just simply render the page with fallback data where necessary
-    console.error(error) // eslint-disable-line no-console
+    console.error(error)
   }
 
   return (
@@ -39,7 +38,7 @@ export default async function Checkout() {
 
 export const metadata: Metadata = {
   title: 'Account',
-  description: 'Create an account or log in to your existing account.',
+  description: 'Maak een account aan of log in op uw bestaande account.',
   openGraph: mergeOpenGraph({
     title: 'Account',
     url: '/account',

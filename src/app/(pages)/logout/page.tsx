@@ -14,12 +14,7 @@ export default async function Logout() {
 
   try {
     settings = await fetchSettings()
-  } catch (error) {
-    // when deploying this template on Payload Cloud, this page needs to build before the APIs are live
-    // so swallow the error here and simply render the page with fallback data where necessary
-    // in production you may want to redirect to a 404  page or at least log the error somewhere
-    // console.error(error)
-  }
+  } catch (error) {}
 
   return (
     <Gutter className={classes.logout}>
@@ -29,10 +24,10 @@ export default async function Logout() {
 }
 
 export const metadata: Metadata = {
-  title: 'Logout',
-  description: 'You have been logged out.',
+  title: 'Uitloggen',
+  description: 'U bent uitgelogd.',
   openGraph: mergeOpenGraph({
-    title: 'Logout',
+    title: 'Uitloggen',
     url: '/logout',
   }),
 }

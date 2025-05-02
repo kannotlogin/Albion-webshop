@@ -24,7 +24,6 @@ export default function ContactPage() {
         },
       })
 
-      // Mail naar jou (beheerder)
       const adminMailOptions = {
         from: formData.email,
         to: process.env.EMAIL_USER,
@@ -44,11 +43,10 @@ export default function ContactPage() {
         `,
       }
 
-      // Bevestigingsmail naar de gebruiker
       const userMailOptions = {
-        from: process.env.EMAIL_USER, // Je bevestigingsmail wordt verzonden vanaf jouw adres
-        to: formData.email, // Het e-mailadres van de gebruiker
-        subject: 'We hebben je bericht ontvangen', // Onderwerp voor de bevestiging
+        from: process.env.EMAIL_USER,
+        to: formData.email,
+        subject: 'We hebben je bericht ontvangen',
         text: `Hallo ${formData.name},\n\nWe hebben je bericht ontvangen. We nemen zo snel mogelijk contact met je op.\n\nMet vriendelijke groet,\nAlbion`,
         html: `
           <html>
@@ -62,9 +60,8 @@ export default function ContactPage() {
         `,
       }
 
-      // Verstuur de e-mails
-      await transporter.sendMail(adminMailOptions) // Verstuur naar jou
-      await transporter.sendMail(userMailOptions) // Verstuur naar de gebruiker
+      await transporter.sendMail(adminMailOptions)
+      await transporter.sendMail(userMailOptions)
 
       return {
         success: true,
@@ -73,7 +70,7 @@ export default function ContactPage() {
     } catch (error) {
       return {
         success: false,
-        error: 'Oops! An error occurred',
+        error: 'Oops! Er is een fout opgetreden',
       }
     }
   }
@@ -83,7 +80,7 @@ export default function ContactPage() {
 
 export const metadata: Metadata = {
   title: 'Contact',
-  description: 'Contact us here.',
+  description: 'Contacteer ons hier.',
   openGraph: mergeOpenGraph({
     title: 'Contact',
     url: '/contact',
