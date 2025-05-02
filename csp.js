@@ -14,7 +14,7 @@ const policies = {
     "'self'",
     'https://*.stripe.com',
     'https://raw.githubusercontent.com',
-    'https://mvvkjeoabgrmprvbhsop.supabase.co', // ← voeg je Supabase-domein toe
+    'https://mvvkjeoabgrmprvbhsop.supabase.co',
   ],
 
   'font-src': ["'self'"],
