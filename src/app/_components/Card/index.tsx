@@ -17,7 +17,7 @@ const priceFromJSON = (priceJSON): string => {
       const parsed = JSON.parse(priceJSON)?.data[0]
       const priceValue = parsed.unit_amount
       const priceType = parsed.type
-      price = `${parsed.currency === 'EUR' ? '€' : ''}${(priceValue / 100).toFixed(2)}`
+      price = `${parsed.currency === 'EUR' ? '$' : ''}${(priceValue / 100).toFixed(2)}`
       if (priceType === 'recurring') {
         price += `/${
           parsed.recurring.interval_count > 1
@@ -26,7 +26,7 @@ const priceFromJSON = (priceJSON): string => {
         }`
       }
     } catch (e) {
-      console.error(`Cannot parse priceJSON`) // eslint-disable-line no-console
+      console.error(`Cannot parse priceJSON`)
     }
   }
 
@@ -54,13 +54,10 @@ export const Card: React.FC<{
 
   const hasCategories = categories && Array.isArray(categories) && categories.length > 0
   const titleToUse = titleFromProps || title
-  const sanitizedDescription = description?.replace(/\s/g, ' ') // replace non-breaking space with white space
+  const sanitizedDescription = description?.replace(/\s/g, ' ')
   const href = `/products/${slug}`
 
-  const [
-    price, // eslint-disable-line no-unused-vars
-    setPrice,
-  ] = useState(() => priceFromJSON(priceJSON))
+  const [price, setPrice] = useState(() => priceFromJSON(priceJSON))
 
   useEffect(() => {
     setPrice(priceFromJSON(priceJSON))

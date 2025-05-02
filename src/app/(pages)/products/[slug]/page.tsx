@@ -11,8 +11,6 @@ import { PaywallBlocks } from '../../../_components/PaywallBlocks'
 import { ProductHero } from '../../../_heros/Product'
 import { generateMeta } from '../../../_utilities/generateMeta'
 
-// Force this page to be dynamic so that Next.js does not cache it
-// See the note in '../../../[slug]/page.tsx' about this
 export const dynamic = 'force-dynamic'
 
 export default async function Product({ params: { slug } }) {
@@ -27,7 +25,7 @@ export default async function Product({ params: { slug } }) {
       draft: isDraftMode,
     })
   } catch (error) {
-    console.error(error) // eslint-disable-line no-console
+    console.error(error)
   }
 
   if (!product) {
