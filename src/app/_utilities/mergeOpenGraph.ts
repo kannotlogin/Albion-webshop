@@ -5,10 +5,10 @@ const defaultOpenGraph: Metadata['openGraph'] = {
   siteName: 'Albion',
   title: 'Albion',
   description:
-    'Dit is de Albion website. Deze website is gemaakt door Quinten Delaere voor zijn eindwerk 2024-2025',
+    'Welkom op deze onofficiële Albion-website, gemaakt door Quinten Delaere als eindwerk voor het schooljaar 2024-2025. Met dit project wilde hij zijn passie voor design en webontwikkeling combineren in een persoonlijke interpretatie van het Albion-merk.',
   images: [
     {
-      url: 'https://mvvkjeoabgrmprvbhsop.supabase.co/storage/v1/object/public/uploads//Logo-animation-loop-background.webm',
+      url: 'https://mvvkjeoabgrmprvbhsop.supabase.co/storage/v1/object/public/uploads//Logo-blurredShopBG.webp',
     },
   ],
 }
