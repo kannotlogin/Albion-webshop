@@ -8,7 +8,7 @@ const defaultOpenGraph: Metadata['openGraph'] = {
     'Dit is de Albion website. Deze website is gemaakt door Quinten Delaere voor zijn eindwerk 2024-2025',
   images: [
     {
-      url: 'https://mvvkjeoabgrmprvbhsop.supabase.co/storage/v1/object/public/uploads//Foto_Binnenkant_Winkel1.png',
+      url: 'https://mvvkjeoabgrmprvbhsop.supabase.co/storage/v1/object/public/uploads//Logo-animation-loop-background.webm',
     },
   ],
 }
