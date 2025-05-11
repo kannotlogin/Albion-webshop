@@ -2,6 +2,7 @@
         "name": "Albion",
         "short_name": "Albion",
         "start_url": "https://shop.quintendelaere.be",
+        "gcm_sender_id": "103953800507",
         "icons": [
             {
             "src": "windows11/SmallTile.scale-100.png",
