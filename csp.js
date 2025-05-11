@@ -18,6 +18,7 @@ const policies = {
     'https://raw.githubusercontent.com',
     'https://mvvkjeoabgrmprvbhsop.supabase.co',
     'https://cdn.onesignal.com',
+    'https://onesignal.com',
   ],
   'font-src': ["'self'"],
   'frame-src': [
@@ -32,6 +33,7 @@ const policies = {
     'https://api.stripe.com',
     'https://maps.googleapis.com',
     'https://cdn.onesignal.com',
+    'https://onesignal.com',
   ],
 }
 
