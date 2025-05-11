@@ -26,23 +26,21 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="manifest" href="/manifest.json" />
 
-        {/* ✅ OneSignal SDK + init */}
         <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              window.OneSignalDeferred = window.OneSignalDeferred || [];
-              OneSignalDeferred.push(async function(OneSignal) {
-                await OneSignal.init({
-                  appId: "dd606204-aa30-4bb1-802f-b15127682761",
-                  safari_web_id: "web.onesignal.auto.1150f274-be67-4412-813c-e6f1ba6adf3e",
-                  notifyButton: {
-                    enable: true,
-                  },
-                  allowLocalhostAsSecureOrigin: true,
-                });
-              });
-            `,
+      window.OneSignalDeferred = window.OneSignalDeferred || [];
+      OneSignalDeferred.push(async function(OneSignal) {
+        await OneSignal.init({
+          appId: "dd606204-aa30-4bb1-802f-b15127682761",
+          safari_web_id: "web.onesignal.auto.1150f274-be67-4412-813c-e6f1ba6adf3e",
+          serviceWorkerPath: "/service-worker.js",
+          allowLocalhostAsSecureOrigin: true,
+          notifyButton: { enable: true },
+        });
+      });
+    `,
           }}
         />
       </head>
