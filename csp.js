@@ -7,6 +7,8 @@ const policies = {
     'https://checkout.stripe.com',
     'https://js.stripe.com',
     'https://maps.googleapis.com',
+    'https://cdn.onesignal.com',
+    'https://onesignal.com',
   ],
   'child-src': ["'self'"],
   'style-src': ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
@@ -15,8 +17,8 @@ const policies = {
     'https://*.stripe.com',
     'https://raw.githubusercontent.com',
     'https://mvvkjeoabgrmprvbhsop.supabase.co',
+    'https://cdn.onesignal.com',
   ],
-
   'font-src': ["'self'"],
   'frame-src': [
     "'self'",
@@ -29,6 +31,7 @@ const policies = {
     'https://checkout.stripe.com',
     'https://api.stripe.com',
     'https://maps.googleapis.com',
+    'https://cdn.onesignal.com',
   ],
 }
 
