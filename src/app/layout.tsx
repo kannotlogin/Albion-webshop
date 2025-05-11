@@ -25,6 +25,26 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link rel="icon" href="/favicon.ico" sizes="32x32" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="manifest" href="/manifest.json" />
+
+        {/* ✅ OneSignal SDK + init */}
+        <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.OneSignalDeferred = window.OneSignalDeferred || [];
+              OneSignalDeferred.push(async function(OneSignal) {
+                await OneSignal.init({
+                  appId: "dd606204-aa30-4bb1-802f-b15127682761",
+                  safari_web_id: "web.onesignal.auto.1150f274-be67-4412-813c-e6f1ba6adf3e",
+                  notifyButton: {
+                    enable: true,
+                  },
+                  allowLocalhostAsSecureOrigin: true,
+                });
+              });
+            `,
+          }}
+        />
       </head>
       <body className={jost.variable}>
         <Providers>
@@ -41,10 +61,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SERVER_URL || 'https://payloadcms.com'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SERVER_URL || 'https://kannotlogin.com'),
   twitter: {
     card: 'summary_large_image',
-    creator: '@payloadcms',
+    creator: '@kannotlogin',
   },
   openGraph: mergeOpenGraph(),
 }
