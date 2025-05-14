@@ -51,7 +51,7 @@ export default async function Page({ params: { slug = 'home' } }) {
           <Hero {...hero} />
 
           <Gutter className={classes.home}>
-            <Categories categories={categories} />
+            <Categories categories={categories.slice(0, 3)} />
             <h3 className={classes.LP}>De nieuwste producten:</h3>
             <Blocks blocks={page?.layout} disableTopPadding={true} />
           </Gutter>
