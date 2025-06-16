@@ -40,43 +40,13 @@ const HeaderComponent = ({ header }: { header: Header }) => {
     return (
       <nav className={classes.headerStandalone}>
         <Gutter className={classes.wrapStandalone}>
-          {/* Gebruik Material Icons als icon buttons */}
-          <button className={classes.iconButton} onClick={toggleMenu} aria-label="Menu">
-            <span
-              className="material-icons"
-              style={{ fontSize: '28px', color: 'var(--theme-text)' }}
-            >
-              menu
-            </span>
-          </button>
-
-          <Link href="/" className={classes.iconButton} aria-label="Home">
-            <span
-              className="material-icons"
-              style={{ fontSize: '28px', color: 'var(--theme-text)' }}
-            >
-              home
-            </span>
-          </Link>
-
-          {/* Voeg eventueel meer icon-buttons toe, bv. zoek-icoon */}
-          <button className={classes.iconButton} aria-label="Search">
-            <span
-              className="material-icons"
-              style={{ fontSize: '28px', color: 'var(--theme-text)' }}
-            >
-              search
-            </span>
-          </button>
-
-          {/* Menu component */}
-          <HeaderNav header={header} isOpen={isOpen} />
+          <HeaderNav header={header} isOpen={true} />
         </Gutter>
       </nav>
     )
   }
 
-  // Normale header voor desktop/browser
+  // Header desktop/browser
   return (
     <nav className={classes.header}>
       <Gutter className={classes.wrap}>
