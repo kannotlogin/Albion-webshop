@@ -34,6 +34,13 @@
   transition: 0.5s;
 }
 
+@media (hover: none) and (pointer: coarse) {
+  .card::before {
+    filter: blur(0);
+    -webkit-filter: blur(0);
+}
+}
+
 .card > * {
   position: relative;
   z-index: 1;
@@ -47,7 +54,6 @@
   filter: blur(0px);
   -webkit-filter: blur(0px);
 }
-
 
 .title {
   border-radius: 10px;
