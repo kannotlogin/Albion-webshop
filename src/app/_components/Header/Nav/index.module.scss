@@ -1,5 +1,6 @@
 @use '../../../_css/queries.scss' as *;
 
+
 .nav {
   display: flex;
   gap: calc(var(--base) / 4) var(--base);
@@ -8,17 +9,28 @@
   opacity: 1;
   transition: opacity 100ms linear;
   visibility: visible;
+}
 
-  > * {
-    text-decoration: none;
-    color: var(--theme-text)
+@media (max-width: 768px) {
+  .nav {
+    height: 0;
+    overflow: hidden;
+    flex-direction: column !important;
+    align-items: center;
+    justify-content: flex-start;
+    background: var(--theme-bg);
+    transition: height 0.5s ease;
+    width: 100%;
+    white-space: normal;
+    flex-wrap: nowrap;
+    gap: 1.5rem;
+  }
+
+  .nav.open {
+    height: 200px;
   }
 }
 
-.hide {
-  opacity: 0;
-  visibility: hidden;
-}
 
 [data-theme='light'] {
   .account img {
